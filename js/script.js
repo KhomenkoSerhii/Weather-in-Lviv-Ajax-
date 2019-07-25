@@ -5,7 +5,7 @@ $(document).ready(function () {
     $.ajax({
         type: 'GET',
         dataType: 'json',
-        url: 'http://api.openweathermap.org/data/2.5/weather?q=LVIV&units=metric&APPID=5d066958a60d315387d9492393935c19',
+        url: 'https://api.openweathermap.org/data/2.5/weather?q=LVIV&units=metric&APPID=5d066958a60d315387d9492393935c19',
         success: function (date) {
             // console.log(date);
             weather.prepend('<h1> Weather in: ' + date.name + '</h1>');
