@@ -1,6 +1,16 @@
 $(document).ready(function () {
 
     var weather = $('#weather');
+    var now = new Date();
+    var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    weather.prepend('Current date: ' + now.getDate() + ' ' + monthNames[now.getMonth()] + ' ' + now.getFullYear());
+
+    function myTimer() {
+        var d = new Date();
+        document.getElementById("time").innerHTML = d.toLocaleTimeString();
+    }
+    setInterval(myTimer, 1000);
 
     $.ajax({
         type: 'GET',
@@ -8,7 +18,7 @@ $(document).ready(function () {
         url: 'https://api.openweathermap.org/data/2.5/weather?q=LVIV&units=metric&APPID=5d066958a60d315387d9492393935c19',
         success: function (date) {
             // console.log(date);
-            weather.prepend('<h1> Weather in: ' + date.name + '</h1>');
+            weather.prepend('<h1> <u> Weather in: ' + date.name + '</u>' + '</h1>');
             weather.append(
                 '<p> Temp: ' + date.main.temp + " °C " + '</p>' +
                 '<p> Pressure: ' + date.main.pressure + " hPa" + '</p>' +
